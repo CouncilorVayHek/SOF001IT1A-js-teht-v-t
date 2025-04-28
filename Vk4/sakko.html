@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ylinopeus</title>
+</head>
+
+<body>
+	<h3>Ylinopeus</h3>
+
+	<form>
+		<p>
+			<label>Nopeus:</label>
+			<input type="text" id="nopeus" size="3">
+		</p>
+		<p>
+			<input type="button" id="painike" value="Kerro" onclick="kerro()">
+		</p>
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<p id="vastaus"></p>
+
+	<script>
+		function kerro() {
+			// Hae arvot
+			let nopeus = Number(document.getElementById("nopeus").value);
+			const rajoitus = 60;
+
+			// Laske ylinopeus
+			let ylinopeus = nopeus - rajoitus;
+
+			// liikennevirhemaksu ylinopeuden perusteella
+			let liikennevirhemaksu = "Ei ylinopeutta";
+			if (ylinopeus > 0 && ylinopeus < 11) {
+				liikennevirhemaksu = "Liikennevirhemaksu on 100.00";
+			} else if (ylinopeus >= 11 && ylinopeus <= 15) {
+				liikennevirhemaksu = "Liikennevirhemaksu on 170.00";
+			} else if (ylinopeus >= 16 && ylinopeus <= 20) {
+				liikennevirhemaksu = "Liikennevirhemaksu on 200.00";
+			} else if (ylinopeus > 20) {
+				liikennevirhemaksu = "Menee päiväsakolle";
+			}
+
+			// vastuas
+			document.getElementById("vastaus").innerHTML = liikennevirhemaksu;
+		}
+
+	</script>
+</body>
+
+</html>

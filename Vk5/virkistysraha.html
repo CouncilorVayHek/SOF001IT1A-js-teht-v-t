@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Virkistysraha</title>
+    <!-- 
+    Yritys antaa 100 euroa virkistysrahaa. Työntekijä on päättänyt käyttää sen säännölliseen harrastukseensa. 
+    Tee ohjelma, joka kertoo, miten virkistysrahan käyttö vähenee harrastuskertojen lisääntyessä.
+    -->
+</head>
+
+<body>
+    <h3>Virkistysraha</h3>
+
+    <!-- Lomake, jossa käyttäjä syöttää harrastuskerran hinnan -->
+    <form>
+        <label>Harrastuskerran hinta</label>
+        <input type="text" id="hinta" size="5">
+        <input type="button" id="painike" value="Näytä" onclick="nayta()">
+    </form>
+
+    <!-- Tänne tulostetaan vastaus JavaScriptillä -->
+    <p id="vastaus"></p>
+
+    <script>
+        function nayta() {
+            let virkistysraha = 100; // alotus
+            let hinta = parseFloat(document.getElementById("hinta").value); // input
+            let kerta = 0;
+            let vastaus = ""; // Tulos säilötään tähän
+
+            // loop niin kauan kuin rahaa riittä
+            while (virkistysraha >= hinta) {
+                kerta++;
+                virkistysraha -= hinta;
+                vastaus += `${kerta}. kerran jälkeen jäljellä on ${virkistysraha.toFixed(2)} euroa<br>`; //perkele, br! käytä <br> ei kä <li>
+            }
+
+            // vastus
+            document.getElementById("vastaus").innerHTML = vastaus;
+        }
+    </script>
+</body>
+
+</html>

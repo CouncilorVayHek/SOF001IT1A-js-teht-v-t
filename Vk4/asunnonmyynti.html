@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Asunnonmyynti</title>
+	<!--  
+Tee ohjelma, joka kysyy asunnon myyntihinnan ja laskee asunnon myynnistä maksettavan 
+välityspalkkion. Välityspalkkion on 4,96% myyntihinnasta ja minimissään 3100 euroa.
+Esimerkiksi jos asunnon myyntihinta on 100000 euroa, välityspalkkio on 4960 euroa
+(myyntihinta * (4.96 / 100)). 
+-->
+</head>
+
+<body>
+	<h3>Asunnonmyynti</h3>
+
+	<form>
+		<label>Hinta:</label>
+		<input type="text" id="hinta" size="8">
+		<input type="button" id="painike" value="Laske" onclick="laskePalkkio()">
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<p id="vastaus"></p>
+
+	<script>
+		function laskePalkkio() {
+			// oikeat arvot
+			let hinta = Number(document.getElementById("hinta").value);
+
+			// laskenta
+			let palkkio = hinta * (4.96 / 100);
+
+			// if lause
+			if (palkkio < 3100) {
+				palkkio = 3100;
+			}
+
+			// vastaus
+			document.getElementById("vastaus").innerHTML = `Myyntipalkkio on ${palkkio.toFixed(2)} euroa`;
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vuoden sadesumma</title>
+	<!-- 
+	Tee ohjelma, mikä näyttää vuoden sadesumman. 
+	 -->
+</head>
+
+<body>
+	<h3>Vuoden sadesumma</h3>
+
+	<p id="vastaus"></p>
+
+	<script>
+		let sademaarat = [47.0, 36.6, 34.7, 37.0, 41.9, 47.5, 61.7, 74.8, 65.4, 69.7, 66.1, 54.6];
+
+		function nayta() {
+   
+    let summa = 0;
+
+    // sademäärä ja summa
+    for (let i = 0; i < sademaarat.length; i++) {
+        summa += sademaarat[i];
+    }
+
+    // vastuas
+    document.getElementById("vastaus").innerHTML = `Sademäärä vuodessa on ${summa.toFixed(1)} mm`;
+}
+
+		nayta();
+	</script>
+</body>
+
+</html>
