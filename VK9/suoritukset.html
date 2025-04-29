@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suoritukset</title>
+</head>
+
+<body>
+    <h3>Suoritukset</h3>
+    <form>
+        <label>Kurssitunnus</label>
+        <input type="text" id="tunnus" size="11">
+        <input type="button" id="painike" value="Hae" onclick="hae()">
+    </form>
+
+    <p id="vastaus"></p>
+
+    <script>
+        let suoritukset = [
+            {
+                nimi: "Johdanto digitaalisiin palveluihin",
+                tunnus: "DIG001IT1A",
+                arvosanat: [
+                    { paiva: "14.03.2023", arvosana: "3" },
+                    { paiva: "21.03.2023", arvosana: "2" },
+                    { paiva: "02.04.2023", arvosana: "4" }
+                ]
+            },
+            {
+                nimi: "Johdanto liiketoimintalähtöiseen ICT:hen",
+                tunnus: "ICB001IT1A",
+                arvosanat: [
+                    { paiva: "15.03.2023", arvosana: "4" }
+                ]
+            },
+            {
+                nimi: "Johdanto ICT-infrastruktuuriin ja pilvipalveluihin",
+                tunnus: "ICI001IT1A",
+                arvosanat: [
+                    { paiva: "16.03.2023", arvosana: "1" },
+                    { paiva: "23.03.2023", arvosana: "4" }
+                ]
+            }
+        ];
+
+        function hae() {
+            let syote = document.getElementById("tunnus").value.trim();
+            let loytyi = false;
+            let tulos = "";
+
+            for (let i = 0; i < suoritukset.length; i++) {
+                if (suoritukset[i].tunnus === syote) {
+                    loytyi = true;
+                    let arvosanat = suoritukset[i].arvosanat;
+                    for (let j = 0; j < arvosanat.length; j++) {
+                        tulos += arvosanat[j].paiva + " arvosana " + arvosanat[j].arvosana + "<br>";
+                    }
+                    break;
+                }
+            }
+
+            if (!loytyi) {
+                tulos = "Suorituksia ei ole tunnuksella " + syote;
+            }
+
+            document.getElementById("vastaus").innerHTML = tulos;
+        }
+    </script>
+</body>
+
+</html>

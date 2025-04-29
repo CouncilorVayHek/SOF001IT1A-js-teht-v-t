@@ -23,7 +23,19 @@ ole tätä vuotta suurempi eli ikä on vähintään nolla.
 
 	<script>
 		function kerroIka() {
-			
+			let tanaan = new Date();                     
+			let nykyVuosi = tanaan.getFullYear();       
+			let sv = document.getElementById("svuosi").value;  
+			let syntymavuosi = parseInt(sv);            
+
+
+			let ika = nykyVuosi - syntymavuosi;
+
+			if (ika < 0) {
+				document.getElementById("vastaus").innerHTML = "Syntymävuosi ei voi olla tulevaisuudessa";
+			} else {
+				document.getElementById("vastaus").innerHTML = "Olet tänä vuonna " + ika + " vuotta";
+			}
 		}
 	</script>
 </body>

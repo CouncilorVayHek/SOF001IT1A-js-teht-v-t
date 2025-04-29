@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Työntekijä</title>
+</head>
+
+<body>
+    <h3>Työntekijä</h3>
+
+    <p id="vastaus"></p>
+
+        <script>
+        let tyontekija = {
+            nimi: "Antti Pennanen",
+            nimike: "Päävalmentaja",
+            yritys: "SUOMEN JÄÄKIEKKOLIITTO"
+        }
+        //palauta alla oleva osa
+        function nayta() {
+            let teksti = tyontekija.nimi + " on " + tyontekija.nimike + " yrityksessä " + tyontekija.yritys;
+            document.getElementById("vastaus").innerHTML = teksti;
+        }
+
+        nayta();
+    </script>
+    </script>
+</body>
+
+</html>

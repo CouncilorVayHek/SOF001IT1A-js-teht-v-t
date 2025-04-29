@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Työtehtävä</title>
+	<style>
+		label {
+			display: block;
+			width: 5em;
+			float: left;
+		}
+	</style>
+<!-- 
+Tee ohjelma, jolla voidaan kirjata työsuoritus ja laskea sen hinta. 
+Työn tuntihinta on 60 euroa. 
+ -->
+</head>
+
+<body>
+	<h3>Työtehtävä</h3>
+
+	<form>
+		<p>
+			<label>Alkoi:</label>
+			<input type="text" id="alkoi" size="5">
+		</p>
+		<p>
+			<label>Päättyi:</label>
+			<input type="text" id="paattyi" size="5">
+		</p>
+		<p>
+			<input type="button" id="painike" value="Laske" onclick="laske()">
+		</p>
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<p id="vastaus"></p>
+
+	<script>
+		function laske() {
+			let alkoi = document.getElementById("alkoi").value.trim();
+			let paattyi = document.getElementById("paattyi").value.trim();
+			let tuntihinta = 60;
+			let hinta = laskeTyohinta(alkoi, paattyi, tuntihinta);
+			document.getElementById("vastaus").innerHTML = "Työn hinta on " + hinta.toFixed(2) + " euroa";
+		}
+
+		function laskeTyohinta(alkoi, paattyi, tuntihinta) {
+
+			let alkoiTunnit = parseInt(alkoi.substring(0, 2));
+			let alkoiMinuutit = parseInt(alkoi.substring(3, 5));
+
+
+			let paattyiTunnit = parseInt(paattyi.substring(0, 2));
+			let paattyiMinuutit = parseInt(paattyi.substring(3, 5));
+
+			let tunnit = paattyiTunnit - alkoiTunnit;
+			let minuutit = paattyiMinuutit - alkoiMinuutit;
+
+			
+			if (minuutit < 0) {
+				tunnit--;
+				minuutit += 60;
+			}
+
+			let yhteensaTunteina = tunnit + (minuutit / 60);
+			let hinta = yhteensaTunteina * tuntihinta;
+
+			return hinta;
+		}
+	</script>
+</body>
+
+</html>

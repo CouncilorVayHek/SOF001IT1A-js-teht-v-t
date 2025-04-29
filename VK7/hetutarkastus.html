@@ -17,11 +17,34 @@
 
 	<p id="vastaus"></p>
 
-	<script>
-		function kerro() {
-			
-		}
-	</script>
+
+    <script>
+        function kerro() {
+            let hetu = document.getElementById("hetu").value.trim();
+            let vastaus = document.getElementById("vastaus");
+
+            if (hetu.length !== 11) {
+                vastaus.innerHTML = "Hetu ei ole ok";
+                return;
+            }
+
+            let alkuosa = hetu.substring(0, 6);
+            let valimerkki = hetu.charAt(6);
+
+            if (!/^\d{6}$/.test(alkuosa)) {
+                vastaus.innerHTML = "Hetu ei ole ok";
+                return;
+            }
+
+            if (valimerkki !== "+" && valimerkki !== "-" && valimerkki !== "A") {
+                vastaus.innerHTML = "Hetu ei ole ok";
+                return;
+            }
+
+           
+            vastaus.innerHTML = "Hetu on ok";
+        }
+    </script>
 </body>
 
 </html>

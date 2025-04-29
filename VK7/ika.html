@@ -25,7 +25,15 @@ Tee ohjelma, joka tarkastaa iän.
 
     <script>
         function tarkastaIka() {
-        
+            let syote = document.getElementById("ika").value.trim();
+
+            if (syote.length === 0) {
+                document.getElementById("vastaus").innerHTML = "Ikä on tyhjä";
+            } else if (isNaN(syote)) {
+                document.getElementById("vastaus").innerHTML = "Ikä ei ole luku";
+            } else {
+                document.getElementById("vastaus").innerHTML = "Ikä kelpaa luvuksi";
+            }
         }
     </script>
 </body>
